@@ -157,8 +157,8 @@ musicBtn.addEventListener('click', () => {
             musicBtn.style.animation = "spin 4s linear infinite";
             musicBtn.setAttribute('aria-label', 'Pause Music');
         }).catch(err => {
-            console.log("Audio play failed (browser policy might require user interaction first):", err);
-            alert("Please interact with the page first to play audio!");
+            console.log("Audio play failed:", err);
+            // alert("Please interact with the page first to play audio!"); // Removed intrusive alert
         });
     }
     isPlaying = !isPlaying;
