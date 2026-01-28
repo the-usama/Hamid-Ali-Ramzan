@@ -144,25 +144,11 @@ celebrateBtn.addEventListener('click', (e) => {
     }, 1500);
 });
 
-// Music Toggle
-musicBtn.addEventListener('click', () => {
-    if (isPlaying) {
-        audio.pause();
-        musicBtn.innerHTML = "🎵";
-        musicBtn.style.animation = "none";
-        musicBtn.setAttribute('aria-label', 'Play Music');
-    } else {
-        audio.play().then(() => {
-            musicBtn.innerHTML = "⏸";
-            musicBtn.style.animation = "spin 4s linear infinite";
-            musicBtn.setAttribute('aria-label', 'Pause Music');
-        }).catch(err => {
-            console.log("Audio play failed:", err);
-            // alert("Please interact with the page first to play audio!"); // Removed intrusive alert
-        });
-    }
-    isPlaying = !isPlaying;
-});
+// Music Toggle - Removed
+// musicBtn.addEventListener('click', () => { ... });
+
+// Add spin animation dynamically for music button (kept for safety or remove)
+// const styleSheet = document.createElement("style"); ...
 
 // Add spin animation dynamically for music button
 const styleSheet = document.createElement("style");
