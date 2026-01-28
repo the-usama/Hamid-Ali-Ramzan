@@ -183,14 +183,14 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-document.addEventListener('touchmove', (e) => {
-    const now = Date.now();
-    if (now - lastTrailTime > 40) {
-        const touch = e.touches[0];
-        createTrail(touch.clientX, touch.clientY);
-        lastTrailTime = now;
-    }
-});
+// document.addEventListener('touchmove', (e) => {
+//     const now = Date.now();
+//     if (now - lastTrailTime > 40) {
+//         const touch = e.touches[0];
+//         createTrail(touch.clientX, touch.clientY);
+//         lastTrailTime = now;
+//     }
+// });
 
 function createTrail(x, y) {
     const trail = document.createElement('div');
