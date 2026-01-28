@@ -173,45 +173,7 @@ styleSheet.innerText = `
 document.head.appendChild(styleSheet);
 
 
-// --- Magic Cursor Trail ---
-let lastTrailTime = 0;
-document.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    if (now - lastTrailTime > 40) { // Limit trail creation to every 40ms (25fps)
-        createTrail(e.clientX, e.clientY);
-        lastTrailTime = now;
-    }
-});
 
-// document.addEventListener('touchmove', (e) => {
-//     const now = Date.now();
-//     if (now - lastTrailTime > 40) {
-//         const touch = e.touches[0];
-//         createTrail(touch.clientX, touch.clientY);
-//         lastTrailTime = now;
-//     }
-// });
-
-function createTrail(x, y) {
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.left = x + 'px';
-    trail.style.top = y + 'px';
-
-    // Randomize color slightly
-    const colors = [
-        'var(--primary-color)',
-        'var(--accent-color)',
-        '#fff'
-    ];
-    trail.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-    document.body.appendChild(trail);
-
-    setTimeout(() => {
-        trail.remove();
-    }, 800); // Shorter life
-}
 
 // --- Floating Balloons ---
 function createBalloon() {

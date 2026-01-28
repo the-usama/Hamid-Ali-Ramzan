@@ -17,25 +17,7 @@
     /* Gold */
 }
 
-/* Cursor Trail */
-.cursor-trail {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
-    animation: fadeOutTrail 1s linear forwards;
-}
 
-@keyframes fadeOutTrail {
-    to {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
 
 /* Floating Balloons */
 .balloon {
