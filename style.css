@@ -255,17 +255,21 @@ body {
 
 .card {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    /* Reduced from 12px */
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 3rem 2rem;
     text-align: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    /* Simplified shadow */
     transform-style: preserve-3d;
     animation: float 6s ease-in-out infinite;
     position: relative;
     overflow: hidden;
+    will-change: transform;
+    /* Hint for browser */
 }
 
 /* Shine effect on card hover */
@@ -281,6 +285,8 @@ body {
             rgba(255, 255, 255, 0.05),
             transparent);
     transition: 0.5s;
+    pointer-events: none;
+    /* Perf: ignore mouse events */
 }
 
 .card:hover::before {

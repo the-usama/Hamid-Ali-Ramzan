@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 let w, h;
 let particles = [];
-const PARTICLE_COUNT = 150;
+const PARTICLE_COUNT = 80; // Reduced from 150 for performance
 const GRAVITY = 0.5;
 const COLORS = ['#FFD700', '#00FFFF', '#FF69B4', '#FFFFFF', '#4C1D95'];
 
@@ -19,9 +19,9 @@ class Particle {
     constructor() {
         this.x = w / 2;
         this.y = h / 2;
-        this.vx = (Math.random() - 0.5) * 20;
-        this.vy = (Math.random() - 0.5) * 20;
-        this.size = Math.random() * 8 + 4;
+        this.vx = (Math.random() - 0.5) * 15; // Slightly slower
+        this.vy = (Math.random() - 0.5) * 15;
+        this.size = Math.random() * 6 + 3; // Slightly smaller
         this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
         this.rotation = Math.random() * Math.PI * 2;
         this.rotationSpeed = (Math.random() - 0.5) * 0.2;
@@ -35,7 +35,7 @@ class Particle {
         this.vx *= this.dampening;
         this.vy *= this.dampening;
         this.rotation += this.rotationSpeed;
-        this.size *= 0.99;
+        this.size *= 0.98; // Shrink slightly faster
     }
 
     draw() {
@@ -53,7 +53,7 @@ function createBurst(x, y) {
         x = w / 2;
         y = h / 2;
     }
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 40; i++) { // Reduced limits
         const p = new Particle();
         p.x = x;
         p.y = y;
@@ -114,10 +114,10 @@ giftContainer.addEventListener('click', () => {
 
         // Start recurring small bursts
         setInterval(() => {
-            if (Math.random() > 0.7) {
+            if (Math.random() > 0.8) { // Reduced frequency
                 createBurst(Math.random() * w, Math.random() * h);
             }
-        }, 2000);
+        }, 3000); // Slower interval
 
     }, 800); // 800ms matches gift animation roughly
 });
@@ -136,7 +136,6 @@ celebrateBtn.addEventListener('click', (e) => {
     createBurst(x, y);
     // Also random bursts
     setTimeout(() => createBurst(Math.random() * w, Math.random() * h), 200);
-    setTimeout(() => createBurst(Math.random() * w, Math.random() * h), 400);
 
     // Add temporary button animation
     celebrateBtn.innerHTML = "🎈 Woohoo! 🎈";
@@ -175,13 +174,22 @@ document.head.appendChild(styleSheet);
 
 
 // --- Magic Cursor Trail ---
+let lastTrailTime = 0;
 document.addEventListener('mousemove', (e) => {
-    createTrail(e.clientX, e.clientY);
+    const now = Date.now();
+    if (now - lastTrailTime > 40) { // Limit trail creation to every 40ms (25fps)
+        createTrail(e.clientX, e.clientY);
+        lastTrailTime = now;
+    }
 });
 
 document.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    createTrail(touch.clientX, touch.clientY);
+    const now = Date.now();
+    if (now - lastTrailTime > 40) {
+        const touch = e.touches[0];
+        createTrail(touch.clientX, touch.clientY);
+        lastTrailTime = now;
+    }
 });
 
 function createTrail(x, y) {
@@ -202,7 +210,7 @@ function createTrail(x, y) {
 
     setTimeout(() => {
         trail.remove();
-    }, 1000);
+    }, 800); // Shorter life
 }
 
 // --- Floating Balloons ---
@@ -218,7 +226,7 @@ function createBalloon() {
     const color = colors[Math.floor(Math.random() * colors.length)];
     balloon.style.background = color;
 
-    // Pseudo-elements need specific handling if we want to color the tail match, 
+    // Pseudo-elements need specific handling if we want to color the tail match,
     // but for simplicity we kept the CSS generic or we can set css var.
     // Let's set a CSS variable for the balloon instance
     balloon.style.setProperty('--gift-color', color);
@@ -239,5 +247,4 @@ function createBalloon() {
 }
 
 // Start Balloons
-setInterval(createBalloon, 800);
-
+setInterval(createBalloon, 2000); // Reduced frequency from 800ms -> 2000ms
