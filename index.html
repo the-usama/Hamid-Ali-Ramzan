@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hamid!</title>
+    <meta name="description" content="A special birthday wish for Hamid Ali Ramzan - 28th January.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Playfair+Display:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div id="gift-container">
+        <div class="gift-box">
+            <div class="gift-lid">
+                <div class="lid-ribbon"></div>
+            </div>
+            <div class="gift-box-base">
+                <div class="box-ribbon"></div>
+            </div>
+        </div>
+        <p class="click-hint">Tap to Open!</p>
+    </div>
+
+    <main class="container hidden" id="main-content">
+        <section class="card glass-effect">
+            <header class="card-header">
+                <span class="sub-title">Celebrating The Special Day Of</span>
+                <h1 class="main-title">Hamid Ali Ramzan</h1>
+                <div class="date-badge">
+                    <span class="day">28</span>
+                    <span class="month">January</span>
+                </div>
+            </header>
+
+            <div class="message-content">
+                <p class="wish-text">
+                    Wishing you a spectacular <strong>23rd Birthday!</strong><br>
+                    May this year bring you endless joy, success, and everything you've ever wished for.
+                </p>
+                <div class="interactive-area">
+                    <button id="celebrate-btn" class="glow-button">🎉 Reform The Celebration! 🎉</button>
+                    <button id="music-btn" class="icon-button" aria-label="Toggle Music">🎵</button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Professional Section -->
+            <div class="info-section">
+                <div class="icon-badge">⚓️</div>
+                <h3>Proudly Serving In</h3>
+                <h2 class="medical-title">Pakistan Navy</h2>
+                <p class="subtitle">Medical Branch</p>
+                <p class="quote-small">"Serving the nation with healing hands."</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Islamic & History Section -->
+            <div class="islamic-section">
+                <div class="icon-badge">☪️</div>
+                <h3>Islamic Wisdom</h3>
+                <blockquote class="hadith">
+                    "The best of people are those that bring most benefit to the rest of mankind."
+                    <footer class="hadith-ref">— Prophet Muhammad (PBUH)</footer>
+                </blockquote>
+
+                <div class="history-box">
+                    <h4>On This Day (28th Jan)</h4>
+                    <p>In <strong>1933</strong>, the name <strong>"Pakistan"</strong> was coined by Choudhry Rahmat Ali,
+                        laying the foundation for our beloved homeland.</p>
+                </div>
+            </div>
+
+            <footer class="card-footer">
+                <p class="signature">With love & best wishes<br>From your beloved Friend<br><strong
+                        style="color: var(--primary-color); font-size: 1.2em;">Usama Aslam</strong></p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Hidden audio element for background music - Placeholder -->
+    <!-- Note: Autoplay is generally blocked by browsers, so we use a button to toggle -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-music-box-530.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
